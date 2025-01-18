@@ -18,6 +18,9 @@ for ticker in nasdaq_top_10:
     stock_data["company"] = ticker  
     all_stock_data = pd.concat([all_stock_data, stock_data], ignore_index=True)
 
+    all_stock_data[["open", "high", "low", "close", "volume"]] = all_stock_data[["open", "high", "low", "close", "volume"]].round(2)
+
+
 all_stock_data.to_csv("nasdaq_top_10_stock_data_2021.csv", index=False)
 
 
