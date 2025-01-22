@@ -34,4 +34,20 @@ def load_nasdaq_data():
     all_stock_data[["open", "high", "low", "close", "volume"]] = all_stock_data[
         ["open", "high", "low", "close", "volume"]
     ].round(2)
+
+    short_to_full = {
+        "AAPL": "Apple Inc.",
+        "NVDA": "NVIDIA Corporation",
+        "MSFT": "Microsoft Corporation",
+        "AMZN": "Amazon.com, Inc.",
+        "AVGO": "Broadcom Inc.",
+        "TSLA": "Tesla, Inc.",
+        "META": "Meta Platforms, Inc.",
+        "GOOGL": "Alphabet Inc. (Class A)",
+        "GOOG": "Alphabet Inc. (Class C)",
+        "COST": "Costco Wholesale Corporation",
+    }
+
+    all_stock_data["company"] = all_stock_data["company"].replace(short_to_full)
+    
     all_stock_data.to_csv("nasdaq_top_10_stock_data_2021.csv", index=False)
